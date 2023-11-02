@@ -6,7 +6,7 @@
 /*   By: yufonten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:57:37 by yufonten          #+#    #+#             */
-/*   Updated: 2023/11/01 18:03:50 by yufonten         ###   ########.fr       */
+/*   Updated: 2023/11/01 21:30:18 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ int	ft_printstr(const char *s)
 	int	i;
 
 	i = 0;
+	if (!s)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	while (s[i] != '\0')
 	{
 		ft_printchar(s[i]);
