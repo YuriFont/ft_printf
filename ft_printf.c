@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 21:30:48 by yufonten          #+#    #+#             */
-/*   Updated: 2023/11/02 16:18:04 by yufonten         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:19:59 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_printf(const char *s, ...)
 	va_end(args);
 	return (len_printf);
 }
-int	main(void)
+/*int	main(void)
 {
 	char	test1 = 'y';
 	char	test2[4] = "yuri";
@@ -74,4 +74,4 @@ int	main(void)
 	int	test;
 	test = ft_printf("%c\n%s\n%p\n%d\n%i\n%u\n%x\n%X\n%%\n%rhkdjsdad", test1, test2, test3, test4, test5, test6, test78, test78);
 	ft_printf("%d\n", test);
-}
+}*/
