@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 21:30:48 by yufonten          #+#    #+#             */
-/*   Updated: 2023/11/02 15:57:30 by yufonten         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:14:38 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,29 @@
 
 int	ft_formats(va_list args, const char type)
 {
-	int	len_format;
+	int	len_print;
 
-	len_format = 0;
+	len_print = 0;
 	if (type == 'c')
-		len_format += ft_printchar(va_arg(args, int));
+		len_print += ft_printchar(va_arg(args, int));
 	else if (type == 's')
-		len_format += ft_printstr(va_arg(args, char *));
+		len_print += ft_printstr(va_arg(args, char *));
 	else if (type == 'p')
-		len_format += ft_printptr(va_arg(args, unsigned long long));
+		len_print += ft_printptr(va_arg(args, unsigned long long));
 	else if (type == 'd' || type == 'i')
-		len_format += ft_printnbr(va_arg(args, int));
+		len_print += ft_printnbr(va_arg(args, int));
 	else if (type == 'u')
-		len_format += ft_print_unsint(va_arg(args, unsigned int));
+		len_print += ft_print_unsint(va_arg(args, unsigned int));
 	else if (type == 'x' || type == 'X')
-		len_format += ft_printhex(va_arg(args, unsigned int), type);
+		len_print += ft_printhex(va_arg(args, unsigned int), type);
 	else if (type == '%')
-		len_format += ft_printchar('%');
-	return (len_format);
+		len_print += ft_printchar('%');
+	else
+	{
+		len_print += ft_printchar('%');
+		len_print += ft_printchar(type);
+	}
+	return (len_print);
 }
 
 int	ft_printf(const char *s, ...)
@@ -67,6 +72,6 @@ int	main(void)
 	unsigned int	test6 = 4294967295;
 	unsigned int	test78 = 45;
 	int	test;
-	test = ft_printf("%c\n%s\n%p\n%d\n%i\n%u\n%x\n%X\n%%\n", test1, test2, test3, test4, test5, test6, test78, test78);
+	test = ft_printf("%c\n%s\n%p\n%d\n%i\n%u\n%x\n%X\n%%\n%rhkdjsdad", test1, test2, test3, test4, test5, test6, test78, test78);
 	ft_printf("%d\n", test);
 }
