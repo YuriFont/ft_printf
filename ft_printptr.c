@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 11:38:38 by yufonten          #+#    #+#             */
-/*   Updated: 2023/11/02 12:09:57 by yufonten         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:52:48 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ int	ft_printptr(unsigned long long ptr)
 {
 	int	len_print;
 
+	if (ptr == 0)
+	{
+		len_print = ft_printstr("(nil)");
+		return (len_print);
+	}
 	len_print = 0;
 	len_print += write(1, "0x", 2);
-	if (ptr == 0)
-		write(1, "0", 1);
-	else
-	{
-		ft_putptr(ptr);
-		len_print += ft_count_ptr(ptr);
-	}
+	ft_putptr(ptr);
+	len_print += ft_count_ptr(ptr);
 	return (len_print);
 }
