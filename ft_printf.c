@@ -6,13 +6,13 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 21:30:48 by yufonten          #+#    #+#             */
-/*   Updated: 2023/11/02 16:14:38 by yufonten         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:18:04 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_formats(va_list args, const char type)
+static int	ft_formats(va_list args, const char type)
 {
 	int	len_print;
 
