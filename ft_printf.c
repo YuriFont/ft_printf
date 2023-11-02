@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 21:30:48 by yufonten          #+#    #+#             */
-/*   Updated: 2023/11/02 16:19:59 by yufonten         ###   ########.fr       */
+/*   Updated: 2023/11/02 16:40:54 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ static int	ft_formats(va_list args, const char type)
 		len_print += ft_printhex(va_arg(args, unsigned int), type);
 	else if (type == '%')
 		len_print += ft_printchar('%');
-	else
-	{
-		len_print += ft_printchar('%');
-		len_print += ft_printchar(type);
-	}
 	return (len_print);
 }
 
