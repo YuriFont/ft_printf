@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 23:24:15 by yufonten          #+#    #+#             */
-/*   Updated: 2023/11/01 23:45:35 by yufonten         ###   ########.fr       */
+/*   Updated: 2023/11/02 12:18:35 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static char	*ft_itoa(int n)
 	char	*r;
 	int		i;
 
-	i = count_nbr(n);
+	i = 0;
+	i = ft_count_nbr(n);
 	r = malloc(sizeof(char) * (i + 1));
 	if (!r)
 		return (NULL);
@@ -64,6 +65,7 @@ int	ft_printnbr(int nb)
 	int		len_print;
 	char	*nbr;
 
+	len_print = 0;
 	nbr = ft_itoa(nb);
 	len_print = ft_printstr(nbr);
 	free(nbr);

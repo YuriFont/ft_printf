@@ -6,7 +6,7 @@
 /*   By: yufonten <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 15:55:15 by yufonten          #+#    #+#             */
-/*   Updated: 2023/11/01 23:47:27 by yufonten         ###   ########.fr       */
+/*   Updated: 2023/11/02 12:00:24 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 int	ft_printchar(char c);
 int	ft_printstr(const char *s);
 int	ft_printnbr(int nb);
+int	ft_printptr(unsigned long long ptr);
 
 #endif

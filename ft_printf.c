@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 21:30:48 by yufonten          #+#    #+#             */
-/*   Updated: 2023/11/01 23:23:58 by yufonten         ###   ########.fr       */
+/*   Updated: 2023/11/02 12:14:21 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	ft_formats(va_list args, const char type)
 
 	len_format = 0;
 	if (type == 'c')
-		len_format = ft_printchar(va_arg(args, char));
+		len_format = ft_printchar(va_arg(args, int));
 	else if (type == 's')
 		len_format = ft_printstr(va_arg(args, char *));
 	else if (type == 'p')
-		len_format = ft_printptr(va_arg(args, void *));
+		len_format = ft_printptr(va_arg(args, unsigned long long));
 	else if (type == 'd' || type == 'i')
 		len_format = ft_printnbr(va_arg(args, int));
 	return (len_format);
@@ -50,4 +50,9 @@ int	ft_printf(const char *s, ...)
 	}
 	va_end(args);
 	return (len_printf);
+}
+int	main(void)
+{
+	char	n = 'y';
+	ft_printf("%c\n", n);
 }
