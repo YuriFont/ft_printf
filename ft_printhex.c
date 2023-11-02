@@ -1,64 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printnbr.c                                      :+:      :+:    :+:   */
+/*   ft_printhex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 23:24:15 by yufonten          #+#    #+#             */
-/*   Updated: 2023/11/02 15:54:49 by yufonten         ###   ########.fr       */
+/*   Created: 2023/11/02 15:23:26 by yufonten          #+#    #+#             */
+/*   Updated: 2023/11/02 16:02:13 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_count_nbr(int nb)
+static int	ft_counthex(unsigned int n)
 {
 	int	i;
 
 	i = 0;
-	if (nb <= 0)
-		i++;
-	while (nb != 0)
+	while (n != 0)
 	{
-		nb = nb / 10;
+		n = n / 16;
 		i++;
 	}
 	return (i);
 }
 
-static void	ft_putnbr(int nb)
+static void	ft_puthex(unsigned int n, const char c)
 {
-	if (nb == -2147483648)
+	if (n >= 16)
 	{
-		ft_printchar('-');
-		ft_printchar('2');
-		ft_putnbr(147483648);
-	}
-	else if (nb < 0)
-	{
-		ft_printchar('-');
-		ft_putnbr(-nb);
-	}
-	else if (nb > 9)
-	{
-		ft_putnbr(nb / 10);
-		ft_printchar((nb % 10) + 48);
+		ft_puthex(n / 16, c);
+		ft_puthex(n % 16, c);
 	}
 	else
-		ft_printchar(nb + 48);
+	{
+		if (n <= 9)
+			ft_printchar(n + 48);
+		else
+		{
+			if (c == 'x')
+				ft_printchar(n - 10 + 'a');
+			if (c == 'X')
+				ft_printchar(n - 10 + 'A');
+		}
+	}
 }
 
-int	ft_printnbr(int nb)
+int	ft_printhex(unsigned int n, const char c)
 {
-	int		len_print;
+	int	len_print;
 
-	if (nb == 0)
+	len_print = 0;
+	if (n == 0)
 	{
-		len_print = ft_printchar(48);
+		len_print += ft_printchar(48);
 		return (len_print);
 	}
-	ft_putnbr(nb);
-	len_print = ft_count_nbr(nb);
+	len_print += ft_counthex(n);
+	ft_puthex(n, c);
 	return (len_print);
 }

@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 21:30:48 by yufonten          #+#    #+#             */
-/*   Updated: 2023/11/02 12:44:52 by yufonten         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:57:30 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ int	ft_formats(va_list args, const char type)
 		len_format += ft_printnbr(va_arg(args, int));
 	else if (type == 'u')
 		len_format += ft_print_unsint(va_arg(args, unsigned int));
+	else if (type == 'x' || type == 'X')
+		len_format += ft_printhex(va_arg(args, unsigned int), type);
+	else if (type == '%')
+		len_format += ft_printchar('%');
 	return (len_format);
 }
 
@@ -55,6 +59,14 @@ int	ft_printf(const char *s, ...)
 }
 int	main(void)
 {
-	unsigned int	n = 4294967295;
-	ft_printf("%u\n", n);
+	char	test1 = 'y';
+	char	test2[4] = "yuri";
+	void	*test3 = &test2;
+	int	test4 = 18;
+	int	test5 = 3;
+	unsigned int	test6 = 4294967295;
+	unsigned int	test78 = 45;
+	int	test;
+	test = ft_printf("%c\n%s\n%p\n%d\n%i\n%u\n%x\n%X\n%%\n", test1, test2, test3, test4, test5, test6, test78, test78);
+	ft_printf("%d\n", test);
 }
