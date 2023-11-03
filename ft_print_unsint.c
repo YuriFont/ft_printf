@@ -6,7 +6,7 @@
 /*   By: yufonten <yufonten@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 12:25:03 by yufonten          #+#    #+#             */
-/*   Updated: 2023/11/02 12:44:03 by yufonten         ###   ########.fr       */
+/*   Updated: 2023/11/03 10:49:33 by yufonten         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,39 +25,28 @@ static int	ft_count(unsigned int n)
 	return (i);
 }
 
-static char	*ft_unsitoa(unsigned int n)
+static void	ft_putunsnbr(unsigned int nb)
 {
-	int		i;
-	char	*r;
-
-	i = 0;
-	i = ft_count(n);
-	r = malloc(sizeof(char) * (i + 1));
-	if (!r)
-		return (NULL);
-	r[i] = '\0';
-	while (n != 0)
+	if (nb > 9)
 	{
-		r[i - 1] = (n % 10) + 48;
-		n = n / 10;
-		i--;
+		ft_putunsnbr(nb / 10);
+		ft_printchar((nb % 10) + 48);
 	}
-	return (r);
+	else
+		ft_printchar(nb + 48);
 }
 
 int	ft_print_unsint(unsigned int n)
 {
 	int		len_print;
-	char	*aux;
 
 	len_print = 0;
 	if (n == 0)
-		len_print += ft_printchar(n);
+		len_print += ft_printchar(48);
 	else
 	{
-		aux = ft_unsitoa(n);
-		len_print += ft_printstr(aux);
-		free(aux);
+		ft_putunsnbr(n);
+		len_print += ft_count(n);
 	}
 	return (len_print);
 }
